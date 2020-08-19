@@ -21,5 +21,8 @@ class App {
             error:this.handleGetGradesError()
         });
     }
+    start(){
+        this.getGrades();
+    }
 }
 
