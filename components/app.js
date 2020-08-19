@@ -4,21 +4,18 @@ class App {
         this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
     }
     handleGetGradesError(error){
-        console.error(error);
+        console.error('this is the error: ',[error]);
     }
     handleGetGradesSuccess(grades){
-        console.log(grades);
+        console.log('success: ',grades);
     }
     getGrades(){
         $.ajax({
             type:"GET",
             url:"https://sgt.lfzprototypes.com/api/grades",
-            data:"none",
-            headers:{
-                "X-Access-Token":"kiycaG2O"
-            },
-            success:this.handleGetGradesSuccess(),
-            error:this.handleGetGradesError()
+            headers:{"x-access-token":"kiycaG2O"},
+            success:this.handleGetGradesSuccess,
+            error:this.handleGetGradesError
         });
     }
     start(){
