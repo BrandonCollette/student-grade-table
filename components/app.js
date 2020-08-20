@@ -5,7 +5,7 @@ class App {
         this.handleGetGradesSuccess = this.handleGetGradesSuccess.bind(this);
     }
     handleGetGradesError(error){
-        console.error('this is the error: ',[error]);
+        console.error('error: ',error);
     }
     handleGetGradesSuccess(grades){
         this.gradeTable.updateGrades(grades);
