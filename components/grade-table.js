@@ -43,7 +43,7 @@ class GradeTable {
             button.textContent = "Delete";
             button.className = 'btn btn-danger';
             button.addEventListener('click',function(){
-                console.log(data[i].id);
+                deleteGrade(data[i].id);
             });
             td4.append(button);
 
