@@ -56,6 +56,13 @@ class App {
     }
     deleteGrade(id){
         console.log('id: ',id);
+        $.ajax({
+            type:"DELETE",
+            url:"https://sgt.lfzprototypes.com/api/grades/"+id,
+            headers:{"x-access-token":"kiycaG2O"},
+            success:this.handleDeleteGradeSuccess,
+            error:this.handleDeleteGradeError
+        });
     }
     handleDeleteGradeError(error){
         console.log('error: ',error);

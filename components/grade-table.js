@@ -10,11 +10,12 @@ class GradeTable {
         tbody.textContent = '';
         this.renderGradeRow(grades,this.deleteGrade);
         var p = document.querySelector('p');
-        if(!grades){
-            p.classList.remove('d-none');
+        if(grades.length > 0){
+             p.className = 'd-none';
         }
-        else if(grades){
-            p.className = 'd-none';
+        else  {
+             p.classList.remove('d-none');
+             p.className = 'w-75 text-center'
         }
 
     }
