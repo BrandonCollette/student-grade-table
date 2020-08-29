@@ -8,13 +8,12 @@ class GradeTable {
         var tbody = this.tableElement.querySelector('tbody');
         tbody.textContent = '';
         this.renderGradeRow(grades,this.deleteGrade);
-        var p = document.querySelector('p');
+        var p = this.noGradesElement;
         if(grades.length > 0){
-             p.className = 'd-none';
+             p.className += ' d-none';
         }
         else  {
              p.classList.remove('d-none');
-             p.className = 'w-75 text-center'
         }
 
     }
