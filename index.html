@@ -6,29 +6,45 @@
     <body>
         <header>
             <div class="container">
-                <div class="row">
-                    <h1 class="col my-4">Student Grade Table</h1>
-                    <h4 class="col my-4 text-right align-self-center">Average Grade <span class="badge badge-secondary badge-dark"></span></h4>
+                <div class="row mt-5 align-items-center">
+                    <div class="col-xl-8">
+                        <h1 class="text-center">Student Grade Table</h1>
+                    </div>
+                    <div class="col-xl-4">
+                        <h3 class="text-center">Average Grade <span class="badge badge-secondary badge-dark"></span></h3>
+                    </div>
                 </div>
             </div>
         </header>
 
+
         <div class="container">
+
             <div class="row">
+                <div class="col">
+                    <hr>
+                </div>
+            </div>
 
-                <table class="table table-striped col-md-8" >
-                    <thead class="thead-dark">
-                        <tr>
-                            <th scope="col">Student Name</th>
-                            <th scope="col">Course</th>
-                            <th scope="col">Grade</th>
-                            <th scope="col">Operations</th>
-                        </tr>
-                    </thead>
-                    <tbody></tbody>
-                </table>
+            <div class="row mt-4">
 
-                <form class="col-6 col-md-4">
+                <div class="col-xl-8">
+                    <table class="table table-striped" >
+                        <thead class="thead-dark">
+                            <tr>
+                                <th scope="col">Student Name</th>
+                                <th scope="col">Course</th>
+                                <th scope="col">Grade</th>
+                                <th scope="col">Operations</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                    <p class="d-none mb-4">No Grades Recorded</p>
+                </div>
+
+                <form class=" col-xl-4 mb-4">
+                    <h3 class="mb-4 text-center">Add Grade</h3>
                     <div class="form-group">
                         <div class="input-group mb-3">
                             <div class="input-group-prepend">
@@ -62,7 +78,6 @@
                     </div>
 
                 </form>
-                <p class="d-none w-75 text-center">No Grades Recorded</p>
 
             </div>
 
