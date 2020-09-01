@@ -38,13 +38,12 @@ class GradeTable {
             td3.textContent = data[i].grade;
 
             var td4 = document.createElement('td');
-            var button = document.createElement('button');
-            button.textContent = "Delete";
-            button.className = 'btn btn-danger';
-            button.addEventListener('click',function(){
+            var iElement = document.createElement('i');
+            iElement.className = 'fas fa-trash-alt';
+            iElement.addEventListener('click',function(){
                 deleteGrade(data[i].id);
             });
-            td4.append(button);
+            td4.append(iElement);
 
             tr.append(td1,td2,td3,td4);
             tbody.append(tr);
