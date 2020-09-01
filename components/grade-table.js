@@ -40,17 +40,19 @@ class GradeTable {
             var td4 = document.createElement('td');
             var deleteElement = document.createElement('i');
             deleteElement.className = 'fas fa-trash-alt ml-4';
-            deleteElement.style.color = "red";
+            deleteElement.style.color = "#ff6666";
+            deleteElement.style.cursor = 'pointer';
             deleteElement.addEventListener('click',function(){
                 deleteGrade(data[i].id);
             });
 
             var updateElement = document.createElement('i');
             updateElement.className = 'fas fa-edit ml-4';
-            updateElement.style.color = 'blue';
+            updateElement.style.color = '#1aa3ff';
+            updateElement.style.cursor = 'pointer';
 
-            td4.append(deleteElement);
             td4.append(updateElement);
+            td4.append(deleteElement);
             td4.style.margin = 'auto';
 
             tr.append(td1,td2,td3,td4);
