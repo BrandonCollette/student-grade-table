@@ -38,12 +38,20 @@ class GradeTable {
             td3.textContent = data[i].grade;
 
             var td4 = document.createElement('td');
-            var iElement = document.createElement('i');
-            iElement.className = 'fas fa-trash-alt';
-            iElement.addEventListener('click',function(){
+            var deleteElement = document.createElement('i');
+            deleteElement.className = 'fas fa-trash-alt ml-4';
+            deleteElement.style.color = "red";
+            deleteElement.addEventListener('click',function(){
                 deleteGrade(data[i].id);
             });
-            td4.append(iElement);
+
+            var updateElement = document.createElement('i');
+            updateElement.className = 'fas fa-edit ml-4';
+            updateElement.style.color = 'blue';
+
+            td4.append(deleteElement);
+            td4.append(updateElement);
+            td4.style.margin = 'auto';
 
             tr.append(td1,td2,td3,td4);
             tbody.append(tr);
