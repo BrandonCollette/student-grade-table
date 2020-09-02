@@ -11,6 +11,9 @@ class App {
         this.deleteGrade = this.deleteGrade.bind(this);
         this.handleDeleteGradeError = this.handleDeleteGradeError.bind(this);
         this.handleDeleteGradeSuccess = this.handleDeleteGradeSuccess.bind(this);
+        this.changeGrade = this.changeGrade.bind(this);
+        this.handleChangeGradeError = this.handleChangeGradeError.bind(this);
+        this.handleChangeGradeSuccess = this.handleChangeGradeSuccess.bind(this);
     }
     handleGetGradesError(error){
         console.error('error: ',error);
@@ -68,6 +71,24 @@ class App {
     }
     handleDeleteGradeSuccess(){
         this.getGrades();
+    }
+
+
+    changeGrade(name,course,grade,id){
+        $.ajax({
+            type:"PATCH",
+            url:"https://sgt.lfzprototypes.com/api/grades/"+id,
+            data:{"name":name,"course":course,"grade":grade},
+            headers:{"x-access-token":"kiycaG2O"},
+            success:this.handleChangeGradeSuccess,
+            error:this.handleChangeGradeError
+        });
+    }
+    handleChangeGradeSuccess(){
+        this.getGrades();
+    }
+    handleChangeGradeError(error){
+        console.log('error: ',error);
     }
 }
 
