@@ -7,7 +7,7 @@ class GradeTable {
     updateGrades(grades){
         var tbody = this.tableElement.querySelector('tbody');
         tbody.textContent = '';
-        this.renderGradeRow(grades,this.deleteGrade);
+        this.renderGradeRow(grades,this.deleteGrade,this.changeGrade);
         var p = this.noGradesElement;
         if(grades.length > 0){
              p.className += ' d-none';
@@ -21,8 +21,11 @@ class GradeTable {
     onDeleteClick(deleteGrade){
         this.deleteGrade = deleteGrade;
     }
+    onChange(changeGrade){
+        this.changeGrade = changeGrade;
+    }
 
-    renderGradeRow(data,deleteGrade){
+    renderGradeRow(data,deleteGrade,changeGrade){
 
         var tbody = this.tableElement.querySelector('tbody');
         for(let i = 0;i<data.length;i++){
@@ -50,6 +53,10 @@ class GradeTable {
             updateElement.className = 'fas fa-edit ml-4';
             updateElement.style.color = '#1aa3ff';
             updateElement.style.cursor = 'pointer';
+            updateElement.addEventListener('click',function(){
+                console.log('updated the grade');
+                changeGrade(data[i].id);
+            });
 
             td4.append(updateElement);
             td4.append(deleteElement);

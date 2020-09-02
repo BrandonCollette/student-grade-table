@@ -39,7 +39,8 @@ class App {
     start(){
         this.getGrades();
         this.gradeForm.onSubmit(this.createGrade);
-        this.gradeTable.onDeleteClick(this.deleteGrade)
+        this.gradeTable.onDeleteClick(this.deleteGrade);
+        this.gradeTable.onChange(this.changeGrade);
     }
     createGrade(name,course,grade){
         $.ajax({
