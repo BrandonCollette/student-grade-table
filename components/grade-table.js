@@ -54,8 +54,10 @@ class GradeTable {
             updateElement.style.color = '#1aa3ff';
             updateElement.style.cursor = 'pointer';
             updateElement.addEventListener('click',function(){
-                console.log('updated the grade');
-                changeGrade(data[i].id);
+                var name = document.querySelector("[name='name']").value;
+                var course = document.querySelector("[name='course']").value;
+                var grade = document.querySelector("[name='grade']").value;
+                changeGrade(name,course,grade,data[i].id);
             });
 
             td4.append(updateElement);
