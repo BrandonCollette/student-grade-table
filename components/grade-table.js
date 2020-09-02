@@ -53,13 +53,17 @@ class GradeTable {
             updateElement.className = 'fas fa-edit ml-4';
             updateElement.style.color = '#1aa3ff';
             updateElement.style.cursor = 'pointer';
-            updateElement.addEventListener('click',function(){
-                var name = document.querySelector("[name='name']").value;
-                var course = document.querySelector("[name='course']").value;
-                var grade = document.querySelector("[name='grade']").value;
-                changeGrade(name,course,grade,data[i].id);
-            });
 
+
+            updateElement.addEventListener('click',function(){
+                document.querySelector("[name='name']").value = data[i].name;
+                document.querySelector("[name='course']").value = data[i].course;
+                document.querySelector("[name='grade']").value = data[i].grade;
+
+                addButton.textContent = 'Update';
+                addTitle.textContent = 'Update Grade';
+                updateId = data[i].id;
+            });
             td4.append(updateElement);
             td4.append(deleteElement);
             td4.style.margin = 'auto';
@@ -68,5 +72,17 @@ class GradeTable {
             tbody.append(tr);
 
         }
+        let addButton = document.getElementById('addButton');
+        let addTitle = document.getElementById('addGrade');
+        addButton.addEventListener('click',function(){
+            if(addButton.textContent === 'Update') {
+                console.log('counting');
+                changeGrade(document.querySelector("[name='name']").value,
+                    document.querySelector("[name='course']").value,
+                    document.querySelector("[name='grade']").value,
+                    updateId);
+            }
+        });
     }
 }
+let updateId = 0;
