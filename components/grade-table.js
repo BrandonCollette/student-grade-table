@@ -24,6 +24,14 @@ class GradeTable {
     onChange(changeGrade){
         this.changeGrade = changeGrade;
     }
+    updateEvent(changeGrade){
+        this.changeGrade = changeGrade;
+        console.log('count');
+        changeGrade(document.querySelector("[name='name']").value,
+            document.querySelector("[name='course']").value,
+            document.querySelector("[name='grade']").value,
+            updateId)
+    }
 
     renderGradeRow(data,deleteGrade,changeGrade){
 
@@ -54,7 +62,6 @@ class GradeTable {
             updateElement.style.color = '#1aa3ff';
             updateElement.style.cursor = 'pointer';
 
-
             updateElement.addEventListener('click',function(){
                 document.querySelector("[name='name']").value = data[i].name;
                 document.querySelector("[name='course']").value = data[i].course;
@@ -64,6 +71,8 @@ class GradeTable {
                 addTitle.textContent = 'Update Grade';
                 updateId = data[i].id;
             });
+
+
             td4.append(updateElement);
             td4.append(deleteElement);
             td4.style.margin = 'auto';
@@ -72,17 +81,17 @@ class GradeTable {
             tbody.append(tr);
 
         }
-        let addButton = document.getElementById('addButton');
-        let addTitle = document.getElementById('addGrade');
         addButton.addEventListener('click',function(){
-            if(addButton.textContent === 'Update') {
-                console.log('counting');
-                changeGrade(document.querySelector("[name='name']").value,
-                    document.querySelector("[name='course']").value,
-                    document.querySelector("[name='grade']").value,
-                    updateId);
-            }
+            console.log('count');
+            changeGrade(document.querySelector("[name='name']").value,
+                document.querySelector("[name='course']").value,
+                document.querySelector("[name='grade']").value,
+                updateId);
+            updateId = null;
         });
     }
 }
+let counter = 0;
 let updateId = 0;
+let addButton = document.getElementById('addButton');
+let addTitle = document.getElementById('addGrade');
