@@ -7,7 +7,7 @@ class GradeTable {
     updateGrades(grades){
         var tbody = this.tableElement.querySelector('tbody');
         tbody.textContent = '';
-        this.renderGradeRow(grades,this.deleteGrade);
+        this.renderGradeRow(grades,this.deleteGrade,this.changeGrade);
         var p = this.noGradesElement;
         if(grades.length > 0){
              p.className += ' d-none';
@@ -21,8 +21,19 @@ class GradeTable {
     onDeleteClick(deleteGrade){
         this.deleteGrade = deleteGrade;
     }
+    onChange(changeGrade){
+        this.changeGrade = changeGrade;
+    }
+    updateEvent(changeGrade){
+        this.changeGrade = changeGrade;
+        console.log('count');
+        changeGrade(document.querySelector("[name='name']").value,
+            document.querySelector("[name='course']").value,
+            document.querySelector("[name='grade']").value,
+            updateId)
+    }
 
-    renderGradeRow(data,deleteGrade){
+    renderGradeRow(data,deleteGrade,changeGrade){
 
         var tbody = this.tableElement.querySelector('tbody');
         for(let i = 0;i<data.length;i++){
@@ -38,17 +49,49 @@ class GradeTable {
             td3.textContent = data[i].grade;
 
             var td4 = document.createElement('td');
-            var button = document.createElement('button');
-            button.textContent = "Delete";
-            button.className = 'btn btn-danger';
-            button.addEventListener('click',function(){
+            var deleteElement = document.createElement('i');
+            deleteElement.className = 'fas fa-trash-alt ml-4';
+            deleteElement.style.color = "#ff6666";
+            deleteElement.style.cursor = 'pointer';
+            deleteElement.addEventListener('click',function(){
                 deleteGrade(data[i].id);
             });
-            td4.append(button);
+
+            var updateElement = document.createElement('i');
+            updateElement.className = 'fas fa-edit ml-4';
+            updateElement.style.color = '#1aa3ff';
+            updateElement.style.cursor = 'pointer';
+
+            updateElement.addEventListener('click',function(){
+                document.querySelector("[name='name']").value = data[i].name;
+                document.querySelector("[name='course']").value = data[i].course;
+                document.querySelector("[name='grade']").value = data[i].grade;
+
+                addButton.textContent = 'Update';
+                addTitle.textContent = 'Update Grade';
+                updateId = data[i].id;
+            });
+
+
+            td4.append(updateElement);
+            td4.append(deleteElement);
+            td4.style.margin = 'auto';
 
             tr.append(td1,td2,td3,td4);
             tbody.append(tr);
 
         }
+        addButton.addEventListener('click',function(){
+            console.log('count');
+            changeGrade(document.querySelector("[name='name']").value,
+                document.querySelector("[name='course']").value,
+                document.querySelector("[name='grade']").value,
+                updateId);
+            updateId = null;
+        });
     }
 }
+let counter = 0;
+let updateId = 0;
+let addButton = document.getElementById('addButton');
+let addTitle = document.getElementById('addGrade');

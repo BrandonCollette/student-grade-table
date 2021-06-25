@@ -9,11 +9,22 @@ class GradeForm {
     }
     handleSubmit(event){
         event.preventDefault();
-        var formData = new FormData(event.target);
-        var name = formData.get('name');
-        var course = formData.get('course');
-        var grade = formData.get('grade');
-        this.createGrade(name,course,grade);
-        event.target.reset();
+        let addButton = document.getElementById('addButton').textContent;
+        let addTitle = document.getElementById('addGrade').textContent;
+        if(addButton === "Update"){
+            document.getElementById('addButton').textContent = "Add";
+            document.getElementById('addGrade').textContent = "Add Grade";
+            event.target.reset();
+            return;
+        }
+        else {
+            var formData = new FormData(event.target);
+            var name = formData.get('name');
+            var course = formData.get('course');
+            var grade = formData.get('grade');
+            this.createGrade(name, course, grade);
+            event.target.reset();
+        }
     }
+
 }
