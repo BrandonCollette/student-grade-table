@@ -31,7 +31,9 @@ class App {
         $.ajax({
             type:"GET",
             url:"https://sgt.lfzprototypes.com/api/grades",
-            headers:{"x-access-token":"kiycaG2O"},
+            headers:{
+                "x-access-token":"kiycaG2O",
+            },
             success:this.handleGetGradesSuccess,
             error:this.handleGetGradesError
         });
